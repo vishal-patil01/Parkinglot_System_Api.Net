@@ -1,0 +1,600 @@
+2020-09-09T11:41:33.6603709+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T11:41:33.6945507+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T11:41:33.6991025+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T11:42:11.5732665+05:30 80000057-0000-ff00-b63f-84710c7967bb [INF] ParkingLotRepository : ApplicationModelLayer.Parking AddVehicleToParking(ApplicationModelLayer.VehicleDetails): Vehicle Parked SuccessFully. (3efc0b02)
+2020-09-09T17:19:37.5809915+05:30  [FTL] Application startup exception (6c57a5ba)
+System.InvalidOperationException: Action 'ParkingLotApplication.Controllers.SecurityController.Park (ParkingLotApplication)' has more than one parameter that was specified or inferred as bound from request body. Only one parameter per action may be bound from body. Inspect the following parameters, and use 'FromQueryAttribute' to specify bound from query, 'FromRouteAttribute' to specify bound from route, and 'FromBodyAttribute' for parameters to be bound from body:
+VehicleDetails vehicleDetails
+ILogger<SecurityController> logger
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.InferParameterBindingInfoConvention.InferParameterBindingSources(ActionModel action)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.InferParameterBindingInfoConvention.Apply(ActionModel action)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ApiBehaviorApplicationModelProvider.OnProvidersExecuting(ApplicationModelProviderContext context)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ApplicationModelFactory.CreateApplicationModel(IEnumerable`1 controllerTypes)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.Initialize()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.GetChangeToken()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.<>c__DisplayClass11_0.<Subscribe>b__0()
+   at Microsoft.Extensions.Primitives.ChangeToken.ChangeTokenRegistration`1..ctor(Func`1 changeTokenProducer, Action`1 changeTokenConsumer, TState state)
+   at Microsoft.Extensions.Primitives.ChangeToken.OnChange(Func`1 changeTokenProducer, Action changeTokenConsumer)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.Subscribe()
+   at Microsoft.AspNetCore.Mvc.Routing.ControllerActionEndpointDataSource..ctor(IActionDescriptorCollectionProvider actions, ActionEndpointFactory endpointFactory)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.GetOrCreateDataSource(IEndpointRouteBuilder endpoints)
+   at Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers(IEndpointRouteBuilder endpoints)
+   at ParkingLotApplication.Startup.<>c.<Configure>b__5_3(IEndpointRouteBuilder endpoints) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Startup.cs:line 110
+   at Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints(IApplicationBuilder builder, Action`1 configure)
+   at ParkingLotApplication.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Startup.cs:line 108
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass13_0.<UseStartup>b__2(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISServerSetupFilter.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+2020-09-09T17:26:00.1783680+05:30  [FTL] Application startup exception (6c57a5ba)
+System.InvalidOperationException: Action 'ParkingLotApplication.Controllers.SecurityController.Park (ParkingLotApplication)' has more than one parameter that was specified or inferred as bound from request body. Only one parameter per action may be bound from body. Inspect the following parameters, and use 'FromQueryAttribute' to specify bound from query, 'FromRouteAttribute' to specify bound from route, and 'FromBodyAttribute' for parameters to be bound from body:
+VehicleDetails vehicleDetails
+ILogger<SecurityController> logger
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.InferParameterBindingInfoConvention.InferParameterBindingSources(ActionModel action)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.InferParameterBindingInfoConvention.Apply(ActionModel action)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ApiBehaviorApplicationModelProvider.OnProvidersExecuting(ApplicationModelProviderContext context)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ApplicationModelFactory.CreateApplicationModel(IEnumerable`1 controllerTypes)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.Initialize()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.GetChangeToken()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.<>c__DisplayClass11_0.<Subscribe>b__0()
+   at Microsoft.Extensions.Primitives.ChangeToken.ChangeTokenRegistration`1..ctor(Func`1 changeTokenProducer, Action`1 changeTokenConsumer, TState state)
+   at Microsoft.Extensions.Primitives.ChangeToken.OnChange(Func`1 changeTokenProducer, Action changeTokenConsumer)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.Subscribe()
+   at Microsoft.AspNetCore.Mvc.Routing.ControllerActionEndpointDataSource..ctor(IActionDescriptorCollectionProvider actions, ActionEndpointFactory endpointFactory)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.GetOrCreateDataSource(IEndpointRouteBuilder endpoints)
+   at Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers(IEndpointRouteBuilder endpoints)
+   at ParkingLotApplication.Startup.<>c.<Configure>b__5_3(IEndpointRouteBuilder endpoints) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Startup.cs:line 110
+   at Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints(IApplicationBuilder builder, Action`1 configure)
+   at ParkingLotApplication.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Startup.cs:line 108
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass13_0.<UseStartup>b__2(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISServerSetupFilter.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+2020-09-09T17:27:15.2505490+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T17:27:15.2890014+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T17:27:15.3130019+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T17:27:50.6435813+05:30 8000007f-0002-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Unpark(Int32): Accessed Unpark Api (f7356486)
+2020-09-09T17:29:26.2464585+05:30 8000003a-0000-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Unpark(Int32): Accessed Unpark Api (f7356486)
+2020-09-09T17:29:27.0798679+05:30 8000003a-0000-fd00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking UnParkVehicle(Int32): Exception : Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression. (449305eb)
+2020-09-09T17:29:27.5009767+05:30 8000003a-0000-fd00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+   at ApplicationRepositoryLayer.ParkingLotRepository.UnParkVehicle(Int32 slotNumber) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 149
+   at ApplicationServiceLayer.OwnerService.UnParkVehicle(Int32 slotId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 81
+   at ParkingLotApplication.Controllers.OwnerController.Unpark(Int32 slotId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 43
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T17:29:39.5149253+05:30 80000081-0002-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Unpark(Int32): Accessed Unpark Api (f7356486)
+2020-09-09T17:29:39.6645908+05:30 80000081-0002-ff00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking UnParkVehicle(Int32): Exception : Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression. (449305eb)
+2020-09-09T17:29:39.8089866+05:30 80000081-0002-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+   at ApplicationRepositoryLayer.ParkingLotRepository.UnParkVehicle(Int32 slotNumber) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 149
+   at ApplicationServiceLayer.OwnerService.UnParkVehicle(Int32 slotId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 81
+   at ParkingLotApplication.Controllers.OwnerController.Unpark(Int32 slotId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 43
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T17:29:48.0977993+05:30 8000005a-0001-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Unpark(Int32): Accessed Unpark Api (f7356486)
+2020-09-09T17:29:48.2773961+05:30 8000005a-0001-fd00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking UnParkVehicle(Int32): Exception : Vehicle Is Not Parked (c630fca6)
+2020-09-09T17:29:48.4401573+05:30 8000005a-0001-fd00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: Vehicle Is Not Parked
+   at ApplicationRepositoryLayer.ParkingLotRepository.UnParkVehicle(Int32 slotNumber) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 149
+   at ApplicationServiceLayer.OwnerService.UnParkVehicle(Int32 slotId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 81
+   at ParkingLotApplication.Controllers.OwnerController.Unpark(Int32 slotId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 43
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T17:29:56.1168926+05:30 8000003c-0000-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Unpark(Int32): Accessed Unpark Api (f7356486)
+2020-09-09T17:29:56.2645367+05:30 8000003c-0000-fd00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking UnParkVehicle(Int32): Exception : Vehicle Is Not Parked (c630fca6)
+2020-09-09T17:29:56.3869960+05:30 8000003c-0000-fd00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: Vehicle Is Not Parked
+   at ApplicationRepositoryLayer.ParkingLotRepository.UnParkVehicle(Int32 slotNumber) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 149
+   at ApplicationServiceLayer.OwnerService.UnParkVehicle(Int32 slotId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 81
+   at ParkingLotApplication.Controllers.OwnerController.Unpark(Int32 slotId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 43
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T17:30:03.8861919+05:30 80000023-0003-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Unpark(Int32): Accessed Unpark Api (f7356486)
+2020-09-09T17:35:36.5473186+05:30 8000003e-0000-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Park(ApplicationModelLayer.VehicleDetails): Accessed Park Api (11341768)
+2020-09-09T17:35:46.3214599+05:30 8000005c-0001-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Unpark(Int32): Accessed Unpark Api (f7356486)
+2020-09-09T17:35:46.4796821+05:30 8000005c-0001-fd00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking UnParkVehicle(Int32): Exception : Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression. (449305eb)
+2020-09-09T17:35:46.6248930+05:30 8000005c-0001-fd00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+   at ApplicationRepositoryLayer.ParkingLotRepository.UnParkVehicle(Int32 slotNumber) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 149
+   at ApplicationServiceLayer.OwnerService.UnParkVehicle(Int32 slotId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 81
+   at ParkingLotApplication.Controllers.OwnerController.Unpark(Int32 slotId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 43
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T17:43:19.8211646+05:30 80000040-0000-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Park(ApplicationModelLayer.VehicleDetails): Accessed Park Api (11341768)
+2020-09-09T17:44:43.6793190+05:30 8000005e-0001-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Park(ApplicationModelLayer.VehicleDetails): Accessed Park Api (11341768)
+2020-09-09T17:44:54.6141340+05:30 80000060-0001-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Park(ApplicationModelLayer.VehicleDetails): Accessed Park Api (11341768)
+2020-09-09T17:45:06.9643360+05:30 80000042-0000-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Park(ApplicationModelLayer.VehicleDetails): Accessed Park Api (11341768)
+2020-09-09T17:45:14.7016219+05:30 80000083-0002-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Park(ApplicationModelLayer.VehicleDetails): Accessed Park Api (11341768)
+2020-09-09T17:45:17.2846036+05:30 80000062-0001-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Park(ApplicationModelLayer.VehicleDetails): Accessed Park Api (11341768)
+2020-09-09T17:45:17.6924922+05:30 80000062-0001-fd00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking AddVehicleToParking(ApplicationModelLayer.VehicleDetails): Exception : Vehicle Is Already Parked (700cebfe)
+2020-09-09T17:45:18.1238173+05:30 80000062-0001-fd00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: Vehicle Is Already Parked
+   at ApplicationRepositoryLayer.ParkingLotRepository.AddVehicleToParking(VehicleDetails vehicleDetails) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 63
+   at ApplicationServiceLayer.OwnerService.ParkVehicle(VehicleDetails vehicleDetails) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 70
+   at ParkingLotApplication.Controllers.OwnerController.Park(VehicleDetails vehicleDetails) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 34
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T17:45:23.1867765+05:30 80000064-0001-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Park(ApplicationModelLayer.VehicleDetails): Accessed Park Api (11341768)
+2020-09-09T17:45:34.3512259+05:30 80000044-0000-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Unpark(Int32): Accessed Unpark Api (f7356486)
+2020-09-09T17:46:02.8285970+05:30 80000066-0001-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Park(ApplicationModelLayer.VehicleDetails): Accessed Park Api (11341768)
+2020-09-09T17:46:09.5882649+05:30 80000046-0000-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult Unpark(Int32): Accessed Unpark Api (f7356486)
+2020-09-09T17:49:05.5615181+05:30 80000025-0003-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult FindVehicleByParkinId(Int32): Accessed Search By ParkingId Api (1e6c76da)
+2020-09-09T17:49:19.7544010+05:30 80000027-0003-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T17:49:19.8932338+05:30 80000027-0003-ff00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking DeleteRecordByParkingId(Int32): Exception : The ConnectionString property has not been initialized. (44d87a19)
+2020-09-09T17:49:20.0019476+05:30 80000027-0003-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: The ConnectionString property has not been initialized.
+   at ApplicationRepositoryLayer.ParkingLotRepository.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 394
+   at ApplicationServiceLayer.OwnerService.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 28
+   at ParkingLotApplication.Controllers.OwnerController.DeleteByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 106
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T18:50:10.6325224+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T18:50:10.6568952+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T18:50:10.6603075+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T18:50:46.8189995+05:30 80000025-0001-fe00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T18:50:50.6410030+05:30 80000025-0001-fe00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking DeleteRecordByParkingId(Int32): Exception : The ConnectionString property has not been initialized. (44d87a19)
+2020-09-09T18:50:52.0899790+05:30 80000025-0001-fe00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: The ConnectionString property has not been initialized.
+   at ApplicationRepositoryLayer.ParkingLotRepository.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 394
+   at ApplicationServiceLayer.OwnerService.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 28
+   at ParkingLotApplication.Controllers.OwnerController.DeleteByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 106
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T18:51:13.6901154+05:30 80000054-0000-fe00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T18:55:49.9178297+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T18:55:49.9546141+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T18:55:49.9838296+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T18:57:29.4677893+05:30 80000027-0001-fe00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult GetEmptySlotList(): Accessed GetAll Empty Parking Slots Api (1d31d365)
+2020-09-09T18:57:42.9051447+05:30 80000029-0001-fe00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T18:58:07.3015282+05:30 80000029-0001-fe00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking DeleteRecordByParkingId(Int32): Exception : The ConnectionString property has not been initialized. (44d87a19)
+2020-09-09T18:58:07.5012108+05:30 80000029-0001-fe00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: The ConnectionString property has not been initialized.
+   at ApplicationRepositoryLayer.ParkingLotRepository.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 394
+   at ApplicationServiceLayer.OwnerService.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 28
+   at ParkingLotApplication.Controllers.OwnerController.DeleteByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 106
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T18:58:10.7022372+05:30 8000002b-0001-fe00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T19:04:22.1155477+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T19:04:22.1948641+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T19:04:22.2013253+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T19:05:06.6085883+05:30 8000002f-0001-fe00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T19:05:07.1959264+05:30 8000002f-0001-fe00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking DeleteRecordByParkingId(Int32): Exception : The ConnectionString property has not been initialized. (44d87a19)
+2020-09-09T19:05:07.4865657+05:30 8000002f-0001-fe00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: The ConnectionString property has not been initialized.
+   at ApplicationRepositoryLayer.ParkingLotRepository.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 394
+   at ApplicationServiceLayer.OwnerService.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 28
+   at ParkingLotApplication.Controllers.OwnerController.DeleteByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 106
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T19:07:39.2629035+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T19:07:39.4272819+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T19:07:39.6654264+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T19:07:59.1904416+05:30 80000033-0001-fe00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T19:07:59.7409651+05:30 80000033-0001-fe00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking DeleteRecordByParkingId(Int32): Exception : The ConnectionString property has not been initialized. (44d87a19)
+2020-09-09T19:07:59.9399130+05:30 80000033-0001-fe00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: The ConnectionString property has not been initialized.
+   at ApplicationRepositoryLayer.ParkingLotRepository.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 394
+   at ApplicationServiceLayer.OwnerService.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 28
+   at ParkingLotApplication.Controllers.OwnerController.DeleteByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 106
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T19:10:04.2190176+05:30 80000089-0002-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T19:13:00.8014339+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T19:13:00.8596325+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T19:13:00.9370801+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T19:13:21.2564868+05:30 80000006-0002-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T19:23:20.7617197+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T19:23:20.7888968+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T19:23:20.8339800+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T19:23:34.0223723+05:30 80000059-0000-fe00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T19:23:38.4971668+05:30 80000059-0000-fe00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking FindVehicleByParkingId(Int32): Exception : No Vehicle Parked On Parking Id =  190 (71943092)
+2020-09-09T19:23:38.7003162+05:30 80000059-0000-fe00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: No Vehicle Parked On Parking Id =  190
+   at ApplicationRepositoryLayer.ParkingLotRepository.FindVehicleByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 360
+   at ApplicationRepositoryLayer.ParkingLotRepository.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 370
+   at ApplicationServiceLayer.OwnerService.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 28
+   at ParkingLotApplication.Controllers.OwnerController.DeleteByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 106
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T19:24:10.1013928+05:30 80000072-0001-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T19:28:13.4598525+05:30 80000072-0001-ff00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking DeleteRecordByParkingId(Int32): Exception : The ConnectionString property has not been initialized. (44d87a19)
+2020-09-09T19:28:13.5256691+05:30 80000072-0001-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: The ConnectionString property has not been initialized.
+   at ApplicationRepositoryLayer.ParkingLotRepository.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 394
+   at ApplicationServiceLayer.OwnerService.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 28
+   at ParkingLotApplication.Controllers.OwnerController.DeleteByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 106
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T19:37:39.4166292+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T19:37:39.4513441+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T19:37:39.4923210+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T19:38:01.6303811+05:30 8000008c-0002-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T19:50:47.5248365+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T19:50:47.5969861+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T19:50:47.6178092+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T19:50:59.7988381+05:30 8000008e-0002-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T19:51:00.4634543+05:30 8000008e-0002-ff00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking DeleteRecordByParkingId(Int32): Exception : The ConnectionString property has not been initialized. (44d87a19)
+2020-09-09T19:51:00.6408381+05:30 8000008e-0002-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: The ConnectionString property has not been initialized.
+   at ApplicationRepositoryLayer.ParkingLotRepository.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 396
+   at ApplicationServiceLayer.OwnerService.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 28
+   at ParkingLotApplication.Controllers.OwnerController.DeleteByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 106
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T19:58:48.4735448+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T19:58:48.5189286+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T19:58:48.5352856+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T19:59:03.1350038+05:30 80000078-0001-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T19:59:03.7619764+05:30 80000078-0001-ff00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking DeleteRecordByParkingId(Int32): Exception : The ConnectionString property has not been initialized. (44d87a19)
+2020-09-09T19:59:03.9902660+05:30 80000078-0001-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: The ConnectionString property has not been initialized.
+   at ApplicationRepositoryLayer.ParkingLotRepository.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 394
+   at ApplicationServiceLayer.OwnerService.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 28
+   at ParkingLotApplication.Controllers.OwnerController.DeleteByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 106
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T20:00:08.9244439+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T20:00:08.9735644+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T20:00:08.9910687+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T20:00:22.3375218+05:30 80000090-0002-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed GetAll Empty Parking Slots Api (6011daeb)
+2020-09-09T20:02:13.4455134+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T20:02:13.4975369+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T20:02:13.5346020+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T20:03:09.3501302+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-09T20:03:09.3801578+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-09T20:03:09.4129668+05:30  [INF] Content root path: "D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication" (b5d60022)
+2020-09-09T20:03:36.7510516+05:30 8000004c-0000-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed Delete Record Api (7f534263)
+2020-09-09T20:04:03.4005018+05:30 80000095-0002-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed Delete Record Api (7f534263)
+2020-09-09T20:04:03.5422965+05:30 80000095-0002-ff00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking DeleteRecordByParkingId(Int32): Exception : Sorry Record Can Not Be Deleted, Vehicle Is Parked On Parking Id = 193 (5ac2275b)
+2020-09-09T20:04:03.7198907+05:30 80000095-0002-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: Sorry Record Can Not Be Deleted, Vehicle Is Parked On Parking Id = 193
+   at ApplicationRepositoryLayer.ParkingLotRepository.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 394
+   at ApplicationServiceLayer.OwnerService.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 28
+   at ParkingLotApplication.Controllers.OwnerController.DeleteByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 106
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-09-09T21:47:46.5484350+05:30 8000004e-0000-fd00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed Delete Record Api (7f534263)
+2020-09-09T21:48:08.3543904+05:30 80000097-0002-ff00-b63f-84710c7967bb [INF] OwnerController : Microsoft.AspNetCore.Mvc.ActionResult DeleteByParkingId(Int32): Accessed Delete Record Api (7f534263)
+2020-09-09T21:48:08.4819537+05:30 80000097-0002-ff00-b63f-84710c7967bb [ERR] ParkingLotRepository : ApplicationModelLayer.Parking DeleteRecordByParkingId(Int32): Exception : Sorry Record Can Not Be Deleted, Vehicle Is Parked On Parking Id = 192 (68f3c3be)
+2020-09-09T21:48:08.5903808+05:30 80000097-0002-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Exception: Sorry Record Can Not Be Deleted, Vehicle Is Parked On Parking Id = 192
+   at ApplicationRepositoryLayer.ParkingLotRepository.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\Repository\Implementation\ParkingLotRepository.cs:line 394
+   at ApplicationServiceLayer.OwnerService.DeleteRecordByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ApplicationServiceLayer\Implementation\OwnerService.cs:line 28
+   at ParkingLotApplication.Controllers.OwnerController.DeleteByParkingId(Int32 parkingId) in D:\vishal\Projects\.Net\Web App\ParkingLotApplication\ParkingLotApplication\Controllers\OwnerController.cs:line 106
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)

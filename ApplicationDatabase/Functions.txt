@@ -1,0 +1,30 @@
+//	Scalar Valued Function
+=================================================
+USE [ParkingLotDB]
+GO
+/****** Object:  UserDefinedFunction [dbo].[GetEmptySlot]    Script Date: 10/09/2020 7:53:19 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Vishal Rajput>
+-- Create date: <Create Date, ,>
+-- Description:	<Description, ,>
+-- =============================================
+ALTER FUNCTION [dbo].[GetEmptySlot]()
+RETURNS INT
+AS
+BEGIN
+	--Checking Total Records
+	IF NOT EXISTS(SELECT TOP 1 SLOT_ID FROM PARKING ORDER BY SLOT_ID)
+	BEGIN
+		Return 1;
+	END 
+	--Checking Any UnParked Vehicles Slot 
+	IF NOT EXISTS(SELECT TOP 1 SLOT_ID FROM PARKING WHERE DISABLED=0 ORDER BY SLOT_ID)
+	BEGIN
+		Return (SELECT TOP 1 SLOT_ID FROM PARKING WHERE DISABLED=1 ORDER BY SLOT_ID DESC)+1;
+	END 
+	Return (SELECT TOP 1 SLOT_ID FROM PARKING WHERE DISABLED=0 ORDER BY SLOT_ID);
+END

@@ -1,0 +1,374 @@
+------------------------------------------------------------------------------------------------------------------------------------------------
+USE [ParkingLotDB]
+GO
+/****** Object:  StoredProcedure [dbo].[spCheckValidation]    Script Date: 10/09/2020 7:55:20 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[spCheckValidation](
+	@TableName SYSNAME,
+	@ColumnName SYSNAME,
+	@CheckingValue NVARCHAR(18),
+	@CustomeErrorMessage NVARCHAR(200) out
+)     
+as   
+Begin 
+
+DECLARE @SQLQuery NVARCHAR(MAX);
+DECLARE @Result NVARCHAR(MAX) ;
+
+SET @SQLQuery = N'SELECT @StoredValue = '+@ColumnName +' FROM  '+@TableName+ ' WHERE '+@ColumnName +' = '+@CheckingValue;
+EXEC sp_executesql @SQLQuery , N'@StoredValue NVARCHAR(MAX) out' , @Result out
+
+if (@Result is NULL)
+	BEGIN
+		RAISERROR (N'%s', -- Message text.  
+           16, -- Severity,  
+           1, -- State,  
+           @CustomeErrorMessage)WITH LOG;
+	END
+End
+------------------------------------------------------------------------------------------------------------------------------------------------
+USE [ParkingLotDB]
+GO
+/****** Object:  StoredProcedure [dbo].[spPark]    Script Date: 10/09/2020 7:57:05 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Vishal Rajput
+-- Create date: 
+-- Description:	
+-- =============================================
+ALTER procedure [dbo].[spPark](
+	@VehicleNumber NVARCHAR(20),
+	@ParkingType NUMERIC(18,0),
+	@DriverType NUMERIC(18,0),
+	@VehicleType NUMERIC(18,0)
+)     
+as   
+Begin
+DECLARE @Disabled BIT;
+SET @Disabled = 1;
+
+DECLARE @EntryTime DATETIME;
+SET @EntryTime = SYSDATETIME();
+
+DECLARE @VehicleTypeErrorMessage NVARCHAR(200);
+DECLARE @ParkingTypeErrorMessage NVARCHAR(200);
+DECLARE @DriverTypeErrorMessage NVARCHAR(200);
+DECLARE @CustomeErrorMessage NVARCHAR(50);
+DECLARE	@SlotId NUMERIC(18);
+SET @VehicleTypeErrorMessage = 'Invalid Vehicle Type';
+SET @ParkingTypeErrorMessage = 'Invalid Parking Type';
+SET @DriverTypeErrorMessage =  'Invalid Driver Type';
+
+BEGIN TRY
+	EXEC spCheckValidation VEHICLE , VEHICLE_ID ,@VehicleType,@VehicleTypeErrorMessage
+	EXEC spCheckValidation PARKING_TYPE , PARKING_TYPE_ID ,@ParkingType,@ParkingTypeErrorMessage
+	EXEC spCheckValidation ROLES , ROLE_ID ,@DriverType,@DriverTypeErrorMessage 
+END TRY
+BEGIN CATCH
+	SET @CustomeErrorMessage=ERROR_MESSAGE();
+	Throw ;
+END CATCH
+
+IF EXISTS(SELECT * FROM PARKING WHERE VEHICLE_NUMBER = @VehicleNumber And CHARGES=0)
+    BEGIN
+       RAISERROR (N'%s', -- Message text.  
+           16, -- Severity,  
+           1, -- State,  
+           'Vehicle Is Already Parked')WITH LOG;
+		   return 1;
+    END
+
+SET @SlotId=dbo.GetEmptySlot();
+BEGIN TRAN
+	BEGIN TRY
+		UPDATE PARKING SET DISABLED=1 Where SLOT_ID=@SlotId And DISABLED=0;
+		Insert into PARKING(VEHICLE_NUMBER,ENTRY_TIME,PARKING_TYPE,DRIVER_TYPE,VEHICLE_TYPE,DISABLED,SLOT_ID,CHARGES)          
+		Values (@VehicleNumber,@EntryTime,@ParkingType, @DriverType,@VehicleType,@Disabled,@SlotId,0) 
+	COMMIT TRAN
+	END TRY
+BEGIN CATCH
+	ROLLBACK TRAN;
+	THROW;
+END CATCH
+End
+------------------------------------------------------------------------------------------------------------------------------------------------
+USE [ParkingLotDB]
+GO
+/****** Object:  StoredProcedure [dbo].[spUnpark]    Script Date: 10/09/2020 7:57:41 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Vishal Rajput
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[spUnpark](
+	@SlotNumber numeric(15)
+)
+	
+AS
+BEGIN
+IF NOT EXISTS(SELECT * FROM PARKING WHERE SLOT_ID = @SlotNumber And CHARGES=0)
+    BEGIN
+       RAISERROR (N'%s', -- Message text.  
+           16, -- Severity,  
+           1, -- State,  
+           'Vehicle Is Not Parked')WITH LOG;
+		   return 1;
+    END
+DECLARE @ExitTime DATETIME;
+DECLARE @Charges NUMERIC(18);
+DECLARE @Time Numeric(10);
+DECLARE @EntryTime DATETIME;
+DECLARE @VehicleCharges Numeric(10);
+DECLARE @RoleCharges Numeric(10);
+DECLARE @ParkingCharges Numeric(10);
+
+SET @VehicleCharges=(select VEHICLE_CHARGE from PARKING JOIN VEHICLE ON PARKING.VEHICLE_TYPE = VEHICLE.VEHICLE_ID WHERE SLOT_ID = @SlotNumber And CHARGES=0);
+SET @RoleCharges=(select CHARGE from PARKING JOIN USERS ON PARKING.DRIVER_TYPE = USERS.ROLES JOIN ROLES ON USERS.ROLES=ROLES.ROLE_ID  WHERE SLOT_ID = @SlotNumber And CHARGES=0);
+SET @ParkingCharges=(select PARKING_CHARGE from PARKING JOIN PARKING_TYPE ON PARKING.PARKING_TYPE = PARKING_TYPE.PARKING_TYPE_ID WHERE SLOT_ID = @SlotNumber And CHARGES=0);
+SET @ExitTime = SYSDATETIME();
+
+SET @EntryTime=(SELECT ENTRY_TIME FROM PARKING WHERE SLOT_ID = @SlotNumber And CHARGES=0)
+SET @Time=(SELECT DATEDIFF(MINUTE, @EntryTime, @ExitTime) AS DateDiff);
+SET @Charges=(@Time + @VehicleCharges +@ParkingCharges)*@RoleCharges;
+	UPDATE PARKING SET EXIT_TIME=@ExitTime,CHARGES=@Charges,DISABLED=0 Where SLOT_ID=@SlotNumber And EXIT_TIME IS NULL;
+END
+------------------------------------------------------------------------------------------------------------------------------------------------
+USE [ParkingLotDB]
+GO
+/****** Object:  StoredProcedure [dbo].[spFindVehicleByParkingId]    Script Date: 10/09/2020 7:58:50 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Vishal Rajput
+-- Create date: 
+-- Description:	
+-- =============================================
+ALTER procedure [dbo].[spFindVehicleByParkingId](
+	@ParkingId int
+)     
+
+as   
+Begin
+IF NOT EXISTS(SELECT * from PARKING WHERE PARKING.PARKING_ID = @ParkingId)
+	BEGIN
+		 RAISERROR (N'%s %d', -- Message text.  
+           16, -- Severity,  
+           1, -- State,  
+           'No Vehicle Parked On Parking Id = ',
+		   @ParkingId)WITH LOG;
+		   return 1;
+	END 
+SELECT * from PARKING WHERE PARKING.PARKING_ID= @ParkingId;
+End
+------------------------------------------------------------------------------------------------------------------------------------------------
+USE [ParkingLotDB]
+GO
+/****** Object:  StoredProcedure [dbo].[spFindVehicleBySlotId]    Script Date: 10/09/2020 7:59:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Vishal Rajput
+-- Create date: 
+-- Description:	
+-- =============================================
+ALTER procedure [dbo].[spFindVehicleBySlotId](
+	@SlotId int
+)     
+
+as   
+Begin
+IF NOT EXISTS(SELECT * from PARKING WHERE PARKING.SLOT_ID = @SlotId )
+	BEGIN
+		 RAISERROR (N'%s %d', -- Message text.  
+           16, -- Severity,  
+           1, -- State,  
+           'No Vehicle Parked On Slot Id = ',
+		   @SlotId)WITH LOG;
+		   return 1;
+	END 
+SELECT * from PARKING WHERE PARKING.SLOT_ID = @SlotId;
+End
+----------------------------------------------------------------------------------------------------------------------------------------------------
+USE [ParkingLotDB]
+GO
+/****** Object:  StoredProcedure [dbo].[spFindVehicleByVehicleNumber]    Script Date: 10/09/2020 8:00:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Vishal Rajput
+-- Create date: 
+-- Description:	
+-- =============================================
+ALTER procedure [dbo].[spFindVehicleByVehicleNumber](
+	@VehicleNumber NVARCHAR(15)
+)     
+
+as   
+Begin
+IF NOT EXISTS(SELECT * from PARKING WHERE PARKING.VEHICLE_NUMBER = @VehicleNumber And CHARGES= 0)
+	BEGIN
+		 RAISERROR (N'%s %s', -- Message text.  
+           16, -- Severity,  
+           1, -- State,  
+           'No Vehicle Found With Vehicle Number = ',
+		   @VehicleNumber)WITH LOG;
+		   return 1;
+	END 
+SELECT * from PARKING WHERE PARKING.VEHICLE_NUMBER = @VehicleNumber	And CHARGES= 0;
+End
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+USE [ParkingLotDB]
+GO
+/****** Object:  StoredProcedure [dbo].[spGetAllParkedVehicles]    Script Date: 10/09/2020 8:00:49 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Vishal Rajput
+-- Create date: 
+-- Description:	
+-- =============================================
+ALTER procedure [dbo].[spGetAllParkedVehicles]    
+
+as   
+Begin
+IF NOT EXISTS(Select * from PARKING WHERE CHARGES=0)
+	BEGIN
+		 RAISERROR (N'%s', -- Message text.  
+           16, -- Severity,  
+           1, -- State,  
+           'Parking Lot Is Empty')WITH LOG;
+		   return 1;
+	END 
+Select * from PARKING WHERE CHARGES=0;
+End
+------------------------------------------------------------------------------------------------------------------------------------------------------
+USE [ParkingLotDB]
+GO
+/****** Object:  StoredProcedure [dbo].[spGetAllVehicles]    Script Date: 10/09/2020 8:01:19 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Vishal Rajput
+-- Create date: 
+-- Description:	
+-- =============================================
+ALTER procedure [dbo].[spGetAllVehicles]    
+
+as   
+Begin
+IF NOT EXISTS(Select * from PARKING)
+	BEGIN
+		 RAISERROR (N'%s', -- Message text.  
+           16, -- Severity,  
+           1, -- State,  
+           'Parking Lot Is Empty')WITH LOG;
+		   return 1;
+	END 
+Select * from PARKING
+End
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+USE [ParkingLotDB]
+GO
+/****** Object:  StoredProcedure [dbo].[spGetReservedParkingSlots]    Script Date: 10/09/2020 8:01:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Vishal Rajput
+-- Create date: <Create Date>
+-- Description:	<Description>
+-- =============================================
+ALTER PROCEDURE [dbo].[spGetReservedParkingSlots]
+AS
+BEGIN
+IF NOT EXISTS(SELECT DISTINCT TOP 100 SLOT_ID FROM PARKING WHERE DISABLED=1 ORDER BY SLOT_ID)
+	BEGIN
+		 RAISERROR (N'%s', -- Message text.  
+           16, -- Severity,  
+           1, -- State,  
+           'Parking Lot Is Empty')WITH LOG;
+		   return 1;
+	END 
+SELECT DISTINCT TOP 100 SLOT_ID FROM PARKING WHERE DISABLED=1 ORDER BY SLOT_ID;
+END
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+USE [ParkingLotDB]
+GO
+/****** Object:  StoredProcedure [dbo].[spDeleteRecordByParkingId]    Script Date: 10/09/2020 8:02:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Vishal Rajput
+-- Create date: 
+-- Description:	
+-- =============================================
+ALTER procedure [dbo].[spDeleteRecordByParkingId](
+	@ParkingId int
+)     
+
+as   
+Begin
+DECLARE @SlotNumber NUMERIC(18,0);
+DECLARE @OldParkingId NUMERIC(18,0);
+
+IF EXISTS(SELECT * from PARKING WHERE PARKING.PARKING_ID = @ParkingId)
+	BEGIN
+		IF NOT EXISTS(SELECT * FROM PARKING WHERE PARKING.PARKING_ID = @ParkingId AND EXIT_TIME IS NULL)
+			BEGIN
+				BEGIN TRAN
+					BEGIN TRY
+						SET @SlotNumber=(SELECT SLOT_ID FROM PARKING WHERE PARKING_ID=@ParkingId AND DISABLED=1);
+						SET @OldParkingId=(SELECT TOP 1 PARKING_ID FROM PARKING WHERE SLOT_ID=@SlotNumber AND DISABLED=1 ORDER BY EXIT_TIME DESC);
+						UPDATE PARKING SET DISABLED=0 Where PARKING_ID=@OldParkingId And DISABLED=1;
+						DELETE FROM PARKING WHERE PARKING_ID=@ParkingId;
+						COMMIT TRAN
+					END TRY
+				BEGIN CATCH
+					ROLLBACK TRAN;
+					THROW;
+				END CATCH
+			END 
+		ELSE
+			BEGIN	
+				RAISERROR (N'%s %d', -- Message text.  
+					16, -- Severity,  
+					1, -- State,  
+					'Sorry Record Can Not Be Deleted, Vehicle Is Parked On Parking Id =',
+					@ParkingId)WITH LOG;
+					return 1;
+			END
+	END 
+ELSE 
+	BEGIN	
+		RAISERROR (N'%s %d', -- Message text.  
+           16, -- Severity,  
+           1, -- State,  
+           'No RECORD FOUND',
+		   @ParkingId)WITH LOG;
+		   return 1;
+	END
+End
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

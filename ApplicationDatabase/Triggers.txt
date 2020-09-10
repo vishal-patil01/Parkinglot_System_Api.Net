@@ -1,0 +1,22 @@
+USE [ParkingLotDB]
+GO
+/****** Object:  Trigger [dbo].[FetchUnparkedVehicleReCord]    Script Date: 10/09/2020 7:52:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Vishal Rajput
+-- Create date: 
+-- Description:	
+-- =============================================
+ALTER TRIGGER [dbo].[FetchUnparkedVehicleReCord]
+   ON  [dbo].[PARKING] 
+   AFTER UPDATE
+AS 
+BEGIN
+    IF UPDATE(CHARGES) AND UPDATE(EXIT_TIME)
+    BEGIN
+	SELECT * FROM PARKING WHERE CHARGES IN (SELECT CHARGES FROM Inserted)
+    END
+END
