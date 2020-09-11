@@ -7,6 +7,8 @@ namespace ParkingLotApplication.Controllers
     using System.Net;
     using ApplicationModelLayer;
     using ApplicationServiceLayer;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
 
@@ -14,7 +16,10 @@ namespace ParkingLotApplication.Controllers
     /// Controller for Owner.
     /// </summary>
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(Roles = "OWNER")]
     [ApiController]
+
     public class OwnerController : ControllerBase
     {
         private readonly IOwnerService ownerService;

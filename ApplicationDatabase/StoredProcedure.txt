@@ -372,3 +372,40 @@ ELSE
 	END
 End
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+USE [ParkingLotDB]
+GO
+/****** Object:  StoredProcedure [dbo].[spLogin]    Script Date: 11-09-2020 20:34:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Vishal Rajput>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[spLogin]
+(
+@Email nvarchar(20),
+@Password nvarchar(20),
+@Role varchar(20) output
+)
+AS
+Declare
+@Role_ID numeric(10)
+
+BEGIN
+	Begin try
+		if Exists (Select ROLES from USERS where Email=@Email And PASSWORD=@Password)
+			Begin
+				set @Role_ID = (Select ROLES from USERS where Email=@Email And PASSWORD=@Password)
+				set @Role=(Select ROLE_TYPE from ROLES where ROLE_ID=@Role_ID)
+			End
+		else
+			PRINT 'User name or password invalid'
+	End try
+	Begin catch
+		Select ERROR_MESSAGE() as errorMessage
+	End catch
+END
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

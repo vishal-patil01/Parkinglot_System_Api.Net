@@ -4,7 +4,6 @@
 namespace ApplicationModelLayer
 {
     using System.ComponentModel.DataAnnotations;
-    using Microsoft.AspNetCore.Mvc;
 
     /// <summary>
     /// Parking Model for Parking Table.

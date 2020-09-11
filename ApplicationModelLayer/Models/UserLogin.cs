@@ -1,4 +1,4 @@
-﻿// <copyright file="Users.cs" company="PlaceholderCompany">
+﻿// <copyright file="UserLogin.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace ApplicationModelLayer
@@ -8,14 +8,8 @@ namespace ApplicationModelLayer
     /// <summary>
     /// Users Model For users Table.
     /// </summary>
-    public class Users
+    public class UserLogin
     {
-        /// <summary>
-        /// Gets or sets Roles.
-        /// </summary>
-        [Required]
-        public int Roles { get; set; }
-
         /// <summary>
         /// Gets or sets Email.
         /// </summary>

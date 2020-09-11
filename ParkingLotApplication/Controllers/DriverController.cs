@@ -7,6 +7,8 @@ namespace ParkingLotApplication.Controllers
     using System.Net;
     using ApplicationModelLayer;
     using ApplicationServiceLayer;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
 
@@ -14,6 +16,7 @@ namespace ParkingLotApplication.Controllers
     /// Controller for Police.
     /// </summary>
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] // Only login required. no specific role required, allow all roles.
     [ApiController]
     public class DriverController : ControllerBase
     {
